@@ -2,13 +2,12 @@
 
 function primeiroMetodo (word) {
 
-    if ( word === undefined ) throw new ReferenceError("Você não passou nenhum parâmetro.");
+    if ( !word ) return new ReferenceError("Você não passou nenhum parâmetro.");
     
     const VERIFY_STRING = typeof word === "string";
     
     // Validando a string
-    if ( VERIFY_STRING !== true ) throw new TypeError("Você deve enviar uma String.");
-    if ( word === "") throw new ReferenceError("Você enviou uma string vazia")
+    if ( VERIFY_STRING !== true ) return new TypeError("Você deve enviar uma String.");
     
     console.log("1º Método: Invertendo a string usando 'for':")
     
@@ -20,20 +19,23 @@ function primeiroMetodo (word) {
         console.log(compare);
     }
     
-    if ( word === compare ? console.log(`"${word}" = "${compare}", por tanto é um palíndromo`) : console.log(`"${word}" != "${compare}", por tanto não é um palíndromo`));
+    if ( word === compare ) {
+        return `"${word}" = "${compare}", por tanto é um palíndromo`;
+     } else { 
+         return `"${word}" != "${compare}", por tanto não é um palíndromo`;
+        }
     
 }
 
 // Método 2: Usando os métodos 'split(), reverse() e join()'
 
 function segundoMetodo (word){
-    if ( word === undefined ) throw new ReferenceError("Você não passou nenhum parâmetro.");
+    if ( !word ) return new ReferenceError("Você não passou nenhum parâmetro.");
     
     const VERIFY_STRING = typeof word === "string";
     
     // Validando a string
-    if ( VERIFY_STRING !== true ) throw new TypeError("Você deve enviar uma String");
-    if ( word === "") throw new ReferenceError("Você enviou uma string vazia")
+    if ( VERIFY_STRING !== true ) return new TypeError("Você deve enviar uma String");
     
     console.log("\n2º Método: Utilizando os métodos split(), reverse() e join():")
     
@@ -44,9 +46,12 @@ function segundoMetodo (word){
     console.log(compare);
     compare = compare.join('');
     
-    if ( word === compare ? console.log(`"${word}" = "${compare}", por tanto é um palíndromo`) : console.log(`"${word}" != "${compare}", por tanto não é um palíndromo`));
-    
+    if ( word === compare ) {
+        return `"${word}" = "${compare}", por tanto é um palíndromo`;
+     } else { 
+         return `"${word}" != "${compare}", por tanto não é um palíndromo`;
+        }
 }
 
-primeiroMetodo();
-segundoMetodo("escada");
+console.log(primeiroMetodo("anta"));
+console.log(segundoMetodo("escada"));
